@@ -18,6 +18,10 @@ Finally allow macports to search the ports (because of [macOS ACLs](https://macp
 ```
 chmod +a 'macports allow search' ~ 
 ```
+you can revserse this by 
+```
+chmod -a "macports allow search" ~
+```
 
 ## Install ports
 Simply install ports using macports
