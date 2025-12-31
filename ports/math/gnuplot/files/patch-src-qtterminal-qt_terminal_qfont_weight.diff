@@ -1,0 +1,51 @@
+diff --color -ur ./src/qtterminal/QtGnuplotScene.cpp ../gnuplot-6.0.4_new/src/qtterminal/QtGnuplotScene.cpp
+--- ./src/qtterminal/QtGnuplotScene.cpp	2025-12-01 06:15:20
++++ ../gnuplot-6.0.4_new/src/qtterminal/QtGnuplotScene.cpp	2025-12-31 18:23:44
+@@ -309,8 +309,22 @@
+ 			m_font.setStyle(QFont::StyleItalic);
+ 		else
+ 			m_font.setStyle(QFont::StyleNormal);
+-		if (fontName.contains(":bold", Qt::CaseInsensitive))
++		if (fontName.contains(":Bold", Qt::CaseInsensitive))
+ 			m_font.setWeight(QFont::Bold);
++                else if (fontName.contains(":Thin", Qt::CaseInsensitive))
++			m_font.setWeight(QFont::Thin);
++                else if (fontName.contains(":ExtraLight", Qt::CaseInsensitive))
++			m_font.setWeight(QFont::ExtraLight);
++                else if (fontName.contains(":Light", Qt::CaseInsensitive))
++			m_font.setWeight(QFont::Light);
++                else if (fontName.contains(":Medium", Qt::CaseInsensitive))
++			m_font.setWeight(QFont::Medium);
++                else if (fontName.contains(":DemiBold", Qt::CaseInsensitive))
++			m_font.setWeight(QFont::DemiBold);
++                else if (fontName.contains(":ExtraBold", Qt::CaseInsensitive))
++			m_font.setWeight(QFont::ExtraBold);
++                else if (fontName.contains(":Black", Qt::CaseInsensitive))
++			m_font.setWeight(QFont::Black);
+ 		else
+ 			m_font.setWeight(QFont::Normal);
+ 		int sep = fontName.indexOf(":");
+diff --color -ur ./src/qtterminal/qt_term.cpp ../gnuplot-6.0.4_new/src/qtterminal/qt_term.cpp
+--- ./src/qtterminal/qt_term.cpp	2025-12-01 06:15:20
++++ ../gnuplot-6.0.4_new/src/qtterminal/qt_term.cpp	2025-12-31 18:23:37
+@@ -725,6 +725,20 @@
+ 		qt->enhancedFontStyle = QFont::StyleNormal;
+ 	if (tempname.contains(":bold", Qt::CaseInsensitive))
+ 		qt->enhancedFontWeight = QFont::Bold;
++        else if (tempname.contains(":Thin", Qt::CaseInsensitive))
++		qt->enhancedFontWeight = QFont::Thin;
++        else if (tempname.contains(":ExtraLight", Qt::CaseInsensitive))
++		qt->enhancedFontWeight = QFont::ExtraLight;
++        else if (tempname.contains(":Light", Qt::CaseInsensitive))
++		qt->enhancedFontWeight = QFont::Light;
++        else if (tempname.contains(":Medium", Qt::CaseInsensitive))
++		qt->enhancedFontWeight = QFont::Medium;
++        else if (tempname.contains(":DemiBold", Qt::CaseInsensitive))
++		qt->enhancedFontWeight = QFont::DemiBold;
++        else if (tempname.contains(":ExtraBold", Qt::CaseInsensitive))
++		qt->enhancedFontWeight = QFont::ExtraBold;
++        else if (tempname.contains(":Black", Qt::CaseInsensitive))
++		qt->enhancedFontWeight = QFont::Black;
+ 	else
+ 		qt->enhancedFontWeight = QFont::Normal;
+ 	int sep = tempname.indexOf(":");
