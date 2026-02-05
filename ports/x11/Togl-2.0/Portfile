@@ -39,6 +39,9 @@ checksums           ${distname}-src.tar.gz \
                     size    10144235
 
 depends_lib         port:tcl port:tk port:xorg-libXmu port:mesa
+                    # TK needs to be +x11 rather than +quartz.
+                    # otherwise Togl will be built with aqua and the newer
+                    # MacOS SDKs don't support AGL anymore.
 
 configure.args      --mandir=${prefix}/share/man \
                     --with-tcl=${prefix}/lib \
