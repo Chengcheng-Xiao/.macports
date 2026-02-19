@@ -1,6 +1,7 @@
 # -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
 
 PortSystem          1.0
+PortGroup           active_variants 1.1
 
 name                Togl-2.0
 version             2.0
@@ -38,10 +39,10 @@ checksums           ${distname}-src.tar.gz \
                     sha256  5196dbf6638e3df8d5c87b5815c8c2b758496eb6f0e41446596c9a4e638d87ed \
                     size    10144235
 
-depends_lib         port:tcl port:tk port:xorg-libXmu port:mesa
-                    # TK needs to be +x11 rather than +quartz.
-                    # otherwise Togl will be built with aqua and the newer
-                    # MacOS SDKs don't support AGL anymore.
+depends_lib         port:tcl port:tk-x11 port:xorg-libXmu port:mesa
+
+# mesa needs to be +llvm, for more see:https://github.com/XQuartz/XQuartz/issues/446#issuecomment-3523987380
+require_active_variants mesa llvm
 
 configure.args      --mandir=${prefix}/share/man \
                     --with-tcl=${prefix}/lib \
