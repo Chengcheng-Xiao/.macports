@@ -1,0 +1,11 @@
+--- togl.c	2008-04-19 07:32:11
++++ ../Togl2.0/togl.c	2026-02-20 20:33:06
+@@ -132,7 +132,7 @@
+ /* pointer to Tk_SetClassProcs function in the stub table */
+ 
+ static void (*SetClassProcsPtr)
+-        _ANSI_ARGS_((Tk_Window, Tk_ClassProcs *, ClientData));
++        _ANSI_ARGS_((Tk_Window, const Tk_ClassProcs *, ClientData));
+ #endif
+ 
+ /* 

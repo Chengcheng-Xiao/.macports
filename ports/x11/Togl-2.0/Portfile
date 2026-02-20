@@ -44,6 +44,10 @@ depends_lib         port:tcl port:tk-x11 port:xorg-libXmu port:mesa
 # mesa needs to be +llvm, for more see:https://github.com/XQuartz/XQuartz/issues/446#issuecomment-3523987380
 require_active_variants mesa llvm
 
+# tk has Tk_SetClassProcs with const Tk_ClassProcs. This patch aligns the Togl
+# code with the tk's definition.
+patchfiles          SetClassProcsPtr_const.patch
+
 configure.args      --mandir=${prefix}/share/man \
                     --with-tcl=${prefix}/lib \
                     --with-tk=${prefix}/lib \
@@ -58,9 +62,6 @@ configure.cppflags-append \
                     # latest Xcode. The workaround is to ignore the incompatible
                     # pointer types warning, which is caused by the stat64
                     # deprecation.
-configure.cflags-append \
-    -Wno-error=incompatible-pointer-types
-    # Ref: https://github.com/macports/macports-ports/blob/master/x11/Togl-2.0/Portfile
 configure.ldflags-append \
     -ltclstub8.6
 
