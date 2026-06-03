@@ -36,7 +36,8 @@ autoconf.dir        ${worksrcpath}/install
 patchfiles          \
     patch-install-m4-x_ac_qe_f90.m4.diff \
     patch-install-m4-x_ac_qe_mpif90.m4.diff \
-    patch-Makefile.diff
+    patch-Makefile.diff \
+    patch-PP-src-pw2wannier90.f90.diff
 
 compilers.choose    cc fc
 # g95 is not compatible with OpenMP
