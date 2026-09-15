@@ -39,10 +39,12 @@ checksums           ${distname}-src.tar.gz \
                     sha256  5196dbf6638e3df8d5c87b5815c8c2b758496eb6f0e41446596c9a4e638d87ed \
                     size    10144235
 
-depends_lib         port:tcl port:tk-x11 port:xorg-libXmu port:mesa
+# tk-x11 is replaced by tk8-x11.
+depends_lib         port:tcl port:tk8-x11 port:xorg-libXmu port:mesa
 
 # mesa needs to be +llvm, for more see:https://github.com/XQuartz/XQuartz/issues/446#issuecomment-3523987380
-require_active_variants mesa llvm
+# FIXED
+# require_active_variants mesa llvm
 
 # tk has Tk_SetClassProcs with const Tk_ClassProcs. This patch aligns the Togl
 # code with the tk's definition.
