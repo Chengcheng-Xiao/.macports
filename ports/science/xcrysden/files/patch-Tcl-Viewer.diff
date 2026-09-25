@@ -1,0 +1,28 @@
+--- Tcl/Viewer.tcl.orig	2019-09-02 17:24:14
++++ Tcl/Viewer.tcl	2026-09-25 08:25:39
+@@ -422,15 +422,21 @@
+ 	set meaW $menuW
+ 	
+ 	set mesaX 0
+-	set mesaY $menuH
+ 	set mesaW [expr $w - $controlW]
+ 	set mesaH [expr $h - $menuH - $meaH]
+-	
+ 	set meaX 0
+-	set meaY [expr $menuH + $mesaH]
++	
++	if { [string match -nocase *Darwin* $::tcl_platform(os)] } {
++	    set meaY $menuH
++	    set mesaY [expr $menuH + $meaH]
++	    set closeY [expr $h - $meaH]
++	} else {
++	    set mesaY $menuH
++	    set meaY [expr $menuH + $mesaH]
++	    set closeY $meaY
++	}
+ 	
+ 	set closeX [expr $w - $controlW]
+-	set closeY $meaY
+ 	set closeW $controlW
+ 	set closeH $meaH
+     } else {
